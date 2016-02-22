@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222172016) do
+ActiveRecord::Schema.define(version: 20160222220202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ownertimes", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "property_id"
+    t.datetime "owner_date_from"
+    t.datetime "owner_date_until"
+  end
 
   create_table "properties", force: :cascade do |t|
     t.text     "description"
@@ -29,10 +37,12 @@ ActiveRecord::Schema.define(version: 20160222172016) do
   end
 
   create_table "property_rental_requests", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "user_id"
     t.integer  "property_id"
+    t.datetime "request_date_from"
+    t.datetime "request_date_until"
   end
 
   create_table "users", force: :cascade do |t|
