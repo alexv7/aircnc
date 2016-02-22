@@ -5,16 +5,36 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+  <link rel="stylesheet" href="main.css">
+
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <% if user_signed_in? %>
-  <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-  <%= link_to "Sign Up", new_user_registration_path %>
-  <%= link_to "Sign In", new_user_session_path %>
-  <% end %>
+  <div class="nav">
+    <div class="mainnav">
+      <ul class="pull-left">
+        <li><%= link_to 'Aircnc', root_path %></li>
+        <li><%= link_to 'Browse', root_path %></li>
+      </ul>
+      <ul class="pull-right">
+      <% if user_signed_in? %>
+        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to 'Become a Host', root_path %></li>
+        <li><%= link_to 'Help', root_path %></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <li><%= link_to 'Log In', new_user_session_path %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <!-- <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
+
+
 
 <%= yield %>
 
