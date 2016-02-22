@@ -1,6 +1,6 @@
 class PropertyRentalRequestsController < ApplicationController
   before_action :set_property_rental_request, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /property_rental_requests
   # GET /property_rental_requests.json
   def index

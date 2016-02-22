@@ -17,8 +17,10 @@
         <td><%= property.name %></td>
         <td><%= property.country %></td>
         <td><%= link_to 'Show', property %></td>
+        <% if user_signed_in? && property.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
         <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
