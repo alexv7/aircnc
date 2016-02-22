@@ -28,6 +28,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise', '~> 3.5', '>= 3.5.6'
 
+gem 'paperclip', '~> 4.3', '>= 4.3.5'
+
+gem 'image_magick', '~> 0.1.9'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -7,6 +7,7 @@
     <tr>
       <th>Description</th>
       <th>Country</th>
+      <th>Profile_pic</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= property.description %></td>
         <td><%= property.country %></td>
+        <td><%= image_tag(property.profile_pic.url,:size => "200x220")%></td>
         <td><%= link_to 'Show', property %></td>
         <% if user_signed_in? && property.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
