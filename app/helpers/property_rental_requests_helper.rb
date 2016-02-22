@@ -1,0 +1,2 @@
+module PropertyRentalRequestsHelper
+end

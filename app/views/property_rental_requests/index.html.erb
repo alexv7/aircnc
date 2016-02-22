@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Property Rental Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @property_rental_requests.each do |property_rental_request| %>
+      <tr>
+        <td><%= link_to 'Show', property_rental_request %></td>
+        <td><%= link_to 'Edit', edit_property_rental_request_path(property_rental_request) %></td>
+        <td><%= link_to 'Destroy', property_rental_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Property rental request', new_property_rental_request_path %>
