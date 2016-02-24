@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :properties
   has_many :property_rental_requests
+
+
 end

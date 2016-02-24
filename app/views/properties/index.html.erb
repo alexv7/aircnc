@@ -2,32 +2,34 @@
 
 <h1>Listing Properties</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Country</th>
-      <th>Profile_pic</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<body>
+  <article>
 
-  <tbody>
+
+<div class="properties-block">
     <% @properties.each do |property| %>
-      <tr>
-        <td><%= property.description %></td>
-        <td><%= property.country %></td>
-        <td><%= image_tag(property.profile_pic.url,:size => "200x220")%></td>
-        <td><%= link_to 'Show', property %></td>
+      <div class="properties_single_box">
+      <ul>
+        <li class="property_name"><%= property.name %></li>
+        <li><%= property.room_type %></li>
+        <!-- <td class="datatables"><%#put this in show= property.description %></td> -->
+        <li><%= property.country %></li>
+        <li><%= property.price %></li>
+        <li><%= image_tag(property.profile_pic.url,:size => "200x220")%></li>
+        <li><%= link_to 'Show', property %></li>
+        <li><%= link_to 'New request', new_property_rental_request_path(property)%></li>
         <% if user_signed_in? && property.user_id == current_user.id %>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <li><%= link_to 'View all requests', property_rental_requests_path(property) %></li>
+        <li><%= link_to 'Edit', edit_property_path(property) %></li>
+        <li><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></li>
         <% end %>
-      </tr>
+        <br>
+      </ul>
+    </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+  </article>
+
+
 
 <%= link_to 'New Property', new_property_path %>

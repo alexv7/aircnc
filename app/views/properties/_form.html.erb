@@ -12,12 +12,24 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
   <div class="field">
+    <%= f.label :room_type %><br>
+    <%= f.text_field :room_type %>
+  </div>
+  <div class="field">
     <%= f.label :country %><br>
     <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :Price_per_Night %><br>
+    <%= f.text_field :price, :value => (number_with_precision(f.object.price, :precision => 2) || 0) %>
   </div>
   <div class="field">
     <%= f.label :profile_pic %><br>

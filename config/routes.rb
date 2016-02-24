@@ -1,6 +1,30 @@
 Rails.application.routes.draw do
-  resources :property_rental_requests
-  resources :properties
+  resources :properties do
+    resources :rental_requests
+
+  end
+
+  resources :rental_requests do
+      member do
+        post 'approve'
+        post 'deny'
+      end
+    end
+
+
+  # resources :rental_requests, except: [:new] do
+  #   member do
+  #     post :approve, to: 'rental_requests#approve'
+  #     post :deny, to: 'rental_requests#deny'
+  #   end
+  # end
+  # resources :rental_requests, except: [:new] do
+  #   member do
+  #     get :approve, to: 'rental_requests#approve'
+  #     get :deny, to: 'rental_requests#deny'
+  #   end
+  # end
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

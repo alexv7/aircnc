@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rental Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="datatables">Start Date</th>
+      <th class="datatables">End Date</th>
+      <th class="datatables">Days</th>
+      <th class="datatables">Description</th>
+      <th class="datatables">User</th>
+      <th class="datatables">Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @property.rental_requests.each do |rental_request| %>
+      <tr>
+        <td class="datatables"><%= rental_request.start_date %></td>
+        <td class="datatables"><%= rental_request.end_date %></td>
+        <td class="datatables"><%= ((rental_request.end_date - rental_request.start_date)/86400).to_i %></td>
+        <td class="datatables"><%=Property.find(rental_request.property_id).description %></td>
+        <td class="datatables"><%=User.find(rental_request.user_id).email %></td>
+        <!-- <td class="datatables"><%= link_to 'Destroy', rental_request, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td class="datatables"><%= rental_request.status%></td>
+        <% if rental_request.status == "pending" %>
+        <td><%= button_to  "Approve", approve_rental_request_url(rental_request), {class: 'btn btn-success'} %></button></td>
+        <td><button type="button" class="btn btn-danger btn-sm"><%= link_to 'Deny', deny_rental_request_path(rental_request), method: :deny%></button></button></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+ <%= link_to 'New Rental request', new_property_rental_request_path %>

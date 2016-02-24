@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222220202) do
+ActiveRecord::Schema.define(version: 20160224005621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "ownertimes", force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "property_id"
-    t.datetime "owner_date_from"
-    t.datetime "owner_date_until"
-  end
 
   create_table "properties", force: :cascade do |t|
     t.text     "description"
@@ -34,15 +26,20 @@ ActiveRecord::Schema.define(version: 20160222220202) do
     t.string   "profile_pic_content_type"
     t.integer  "profile_pic_file_size"
     t.datetime "profile_pic_updated_at"
+    t.boolean  "for_rent?"
+    t.string   "room_type"
+    t.float    "price"
+    t.string   "name"
   end
 
-  create_table "property_rental_requests", force: :cascade do |t|
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+  create_table "rental_requests", force: :cascade do |t|
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "user_id"
     t.integer  "property_id"
-    t.datetime "request_date_from"
-    t.datetime "request_date_until"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "status",      default: "pending"
   end
 
   create_table "users", force: :cascade do |t|
