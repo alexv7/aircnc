@@ -34,7 +34,7 @@ class PropertiesController < ApplicationController
   # POST /properties.json
   def create
     address = "#{params[:property][:street_number]}%20#{params[:property][:street_name]}%20#{params[:property][:city]}%20#{params[:property][:state]}%20#{params[:property][:country]}%20#{params[:property][:zip_code]}"
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyBCV_0Qx_HcUnHdLQwzm0BxjNLfcJQdifU"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=#{ENV['googleapikey']}"
 
     response = HTTParty.get(url)
 

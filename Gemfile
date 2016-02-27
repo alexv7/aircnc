@@ -20,6 +20,8 @@ gem 'gon', '~> 6.0', '>= 6.0.1'
 
 gem 'geocoder', '~> 1.3', '>= 1.3.1'
 
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
