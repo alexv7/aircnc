@@ -10,6 +10,10 @@
   <%= @property.country %>
 </p>
 
+
+<%= render 'shared/googlemap' %>
+
+
 <% if user_signed_in? && @property.user_id == current_user.id %>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <% end %>

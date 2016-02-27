@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ #map {
+         height: 500px;
+         width: 500px;
+
+       }
+
+
+/*"#{params[:property][:street_number]}%20#{params[:property][:street_name]}%20#{params[:property][:city]}%20#{params[:property][:state]}%20#{params[:property][:country]}%20#{params[:property][:zip_code]}*/

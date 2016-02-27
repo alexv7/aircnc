@@ -1,6 +1,21 @@
-<iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAuO2NXLGmydOOEAfsfY9ZZb2J3YbZNA3M&q=Space+Needle,Seattle+WA" allowfullscreen>
-</iframe>
+<div id="map"></div>
+<script>
+  var map;
+  function initMap() {
+    // console.log(gon.lat);
+    var myLatLng = {lat: gon.lat, lng: gon.lng};
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 12
+    });
+
+    var marker = new google.maps.Marker({
+       position: myLatLng,
+       map: map,
+       title: 'Hello World!'
+     });
+
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCV_0Qx_HcUnHdLQwzm0BxjNLfcJQdifU&callback=initMap"
+async defer></script>

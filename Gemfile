@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'httparty', '~> 0.13.7'
 
+gem 'gon', '~> 6.0', '>= 6.0.1'
+
 gem 'geocoder', '~> 1.3', '>= 1.3.1'
 
 # Use jquery as the JavaScript library
