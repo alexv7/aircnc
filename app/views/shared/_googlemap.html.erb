@@ -1,7 +1,24 @@
 <div id="map"></div>
 <script>
+
+
+
   var map;
+  var my_location;
   function initMap() {
+
+  //   if(navigator.geolocation) {
+  //    navigator.geolocation.getCurrentPosition(function(position){
+  //      var lat = parseFloat(position.coords.latitude);
+  //      var lon = parseFloat(position.coords.longitude);
+  //      console.log(lat);
+  //      console.log(lon);
+  //      my_location = {latit: lat, longit: lon};
+  //   });
+  // };
+
+
+
     // console.log(gon.lat);
     var myLatLng = {lat: gon.lat, lng: gon.lng};
     map = new google.maps.Map(document.getElementById('map'), {
@@ -15,7 +32,11 @@
        title: 'Hello World!'
      });
 
+
   }
+
+
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCV_0Qx_HcUnHdLQwzm0BxjNLfcJQdifU&callback=initMap"
 async defer></script>

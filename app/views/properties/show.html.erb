@@ -10,6 +10,11 @@
   <%= @property.country %>
 </p>
 
+<p>
+  <strong>Address:</strong>
+  <%= @property.street_number + ' ' + @property.street_name + ' ' + @property.city + ' ' + @property.zip_code %>
+</p>
+
 
 <%= render 'shared/googlemap' %>
 

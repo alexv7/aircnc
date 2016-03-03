@@ -57,6 +57,14 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1
   # PATCH/PUT /properties/1.json
   def update
+    address = "#{params[:property][:street_number]}%20#{params[:property][:street_name]}%20#{params[:property][:city]}%20#{params[:property][:state]}%20#{params[:property][:country]}%20#{params[:property][:zip_code]}"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=#{ENV['googleapikey']}"
+
+    response = HTTParty.get(url)
+
+    @property.latitude = response['results'][0]['geometry']['location']['lat']
+    @property.longitude = response['results'][0]['geometry']['location']['lng']
+
     respond_to do |format|
       if @property.update(property_params)
         format.html { redirect_to @property, notice: 'Property was successfully updated.' }
