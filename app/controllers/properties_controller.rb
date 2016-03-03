@@ -10,6 +10,13 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
+
+    gon.push({
+      :lat => @property.latitude.to_f,
+      :lng => @property.longitude.to_f
+      })
+
+
   end
 
 
@@ -26,7 +33,15 @@ class PropertiesController < ApplicationController
   # POST /properties
   # POST /properties.json
   def create
+    address = "#{params[:property][:street_number]}%20#{params[:property][:street_name]}%20#{params[:property][:city]}%20#{params[:property][:state]}%20#{params[:property][:country]}%20#{params[:property][:zip_code]}"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=#{ENV['googleapikey']}"
+
+    response = HTTParty.get(url)
+
     @property = current_user.properties.build(property_params)
+
+    @property.latitude = response['results'][0]['geometry']['location']['lat']
+    @property.longitude = response['results'][0]['geometry']['location']['lng']
 
     respond_to do |format|
       if @property.save
@@ -42,6 +57,14 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1
   # PATCH/PUT /properties/1.json
   def update
+    address = "#{params[:property][:street_number]}%20#{params[:property][:street_name]}%20#{params[:property][:city]}%20#{params[:property][:state]}%20#{params[:property][:country]}%20#{params[:property][:zip_code]}"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=#{ENV['googleapikey']}"
+
+    response = HTTParty.get(url)
+
+    @property.latitude = response['results'][0]['geometry']['location']['lat']
+    @property.longitude = response['results'][0]['geometry']['location']['lng']
+
     respond_to do |format|
       if @property.update(property_params)
         format.html { redirect_to @property, notice: 'Property was successfully updated.' }
@@ -71,6 +94,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:description, :country, :profile_pic, :name, :price, :room_type)
+      params.require(:property).permit(:description, :country, :profile_pic, :name, :price, :room_type, :street_name, :street_number, :city, :state, :zip_code)
     end
 end

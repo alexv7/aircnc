@@ -5,7 +5,6 @@
 <body>
   <article>
 
-
 <div class="properties-block">
     <% @properties.each do |property| %>
       <div class="properties_single_box">
@@ -30,6 +29,8 @@
 
   </article>
 
-
+<%= render 'shared/mylocation' %>
 
 <%= link_to 'New Property', new_property_path %>
+
+ </body>
