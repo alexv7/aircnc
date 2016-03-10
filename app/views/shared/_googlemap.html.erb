@@ -7,20 +7,22 @@
   var my_location;
   function initMap() {
 
-  //   if(navigator.geolocation) {
-  //    navigator.geolocation.getCurrentPosition(function(position){
-  //      var lat = parseFloat(position.coords.latitude);
-  //      var lon = parseFloat(position.coords.longitude);
-  //      console.log(lat);
-  //      console.log(lon);
-  //      my_location = {latit: lat, longit: lon};
-  //   });
-  // };
+    if(navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function(position){
+       var lat = parseFloat(position.coords.latitude);
+       var lon = parseFloat(position.coords.longitude);
+       console.log(lat);
+       console.log(lon);
+       my_location = {lat: lat, lng: lon};
+       console.log(my_location);
+    });
+  };
 
 
 
     // console.log(gon.lat);
     var myLatLng = {lat: gon.lat, lng: gon.lng};
+    console.log(myLatLng);
     map = new google.maps.Map(document.getElementById('map'), {
       center: myLatLng,
       zoom: 12
@@ -31,6 +33,8 @@
        map: map,
        title: 'Hello World!'
      });
+
+
 
 
   }
